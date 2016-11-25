@@ -16,11 +16,13 @@ function loadNewsFromServer(url) {
     loading(true);
     fetch(url)
       .then(function (response) {
-          return response.json()
+          if(NODE_ENV) console.log(response);
+          return response.json();
       }).then(function (json) {
           generateArticles(json.articles);
       }).catch(function (ex) {
-          alert(`Error: ${ex}`)
+          alert(`Error: ${ex}`);
+          if(NODE_ENV) console.log(ex);
       })
 }
 
