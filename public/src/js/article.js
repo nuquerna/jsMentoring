@@ -1,5 +1,13 @@
 "use strict";
 
+const DATE_OPTIONS = {
+    year: "numeric",
+    month: "numeric",
+    day: "numeric",
+    hour: "numeric",
+    minute: "numeric"
+};
+
 class Article {
     constructor(article) {
         this.author = article.author;
@@ -25,13 +33,7 @@ class Article {
 
         title.innerText = this.author;
         subtitle.innerText = this.title;
-        published.innerText = new Date(this.publishAt).toLocaleString("en-US", {
-            year: "numeric",
-            month: "numeric",
-            day: "numeric",
-            hour: "numeric",
-            minute: "numeric"
-        });
+        published.innerText = new Date(this.publishAt).toLocaleString("en-US", DATE_OPTIONS);
         published.className = "time";
 
         hgroup.appendChild(title);

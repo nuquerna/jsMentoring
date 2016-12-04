@@ -1,6 +1,4 @@
 # jsMentoring
 
-Node.js should be
-
-1) npm update
-2) node app
+1) install node
+2) launch "node dev-server"
