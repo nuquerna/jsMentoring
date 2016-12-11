@@ -60,6 +60,12 @@ body {
   padding: 20px;
   border-top: 2px solid #999999;
 }
+.red {
+  background: indianred;
+}
+.green {
+  background: lightgreen;
+}
 article {
   background: #FFFBCC;
   border: 1px solid #999999;

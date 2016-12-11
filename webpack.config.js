@@ -2,6 +2,7 @@
 
 const NODE_ENV = process.env.NODE_ENV || "deelopment";
 const ExtractTextPlugin = require("extract-text-webpack-plugin");
+const WebpackInfoPlugin = require('webpack-info-plugin');
 const webpack = require("webpack");
 const path = require("path");
 
@@ -22,7 +23,20 @@ module.exports = {
             NODE_ENV:   JSON.stringify(NODE_ENV),
             LANG:       JSON.stringify("ru")
         }),
-        new ExtractTextPlugin("./css/[name].css")
+        new ExtractTextPlugin("./css/[name].css"),
+        new WebpackInfoPlugin({
+            stats: {
+                colors: true,
+                version: false,
+                hash: false,
+                timings: true,
+                assets: false,
+                chunks: false,
+                chunkModules: false,
+                modules: false
+            },
+            state: true
+        })
     ],
     module: {
         loaders: [{

@@ -6,5 +6,5 @@ var devServer = new WebpackDevServer(
     {
         contentBase: __dirname,
         publicPath: './public/dist'
-}
+    }
 ).listen(3333, 'localhost');
