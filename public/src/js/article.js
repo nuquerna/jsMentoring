@@ -69,6 +69,7 @@ class ConcreteArticleGreen extends Strategy {
         let article = document.createElement("article");
         let header = document.createElement("header");
         let published = document.createElement("p");
+        published.Id = 'publish';
         let hgroup = document.createElement("hgroup");
         let title = document.createElement("h1");
         let subtitle = document.createElement("h2");

@@ -8,6 +8,7 @@ let articles = [];
 
 let Article = require('./article.js');
 let Admin = require('./singleton.js');
+let Hello = require('./hello.js');
 
 let spinner = document.getElementById("loading");
 
@@ -65,6 +66,8 @@ function generateArticles(type) {
         newArticle.ContextInterface();
     }
     loading();
+    
+    let hello = new Hello();
 }
 
 function generateGreenArticles() {

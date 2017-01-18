@@ -13,6 +13,9 @@ module.exports = {
         path: path.join(__dirname, './public/dist'),
         filename: "./js/[name].js"
     },
+    resolve: {
+        extensions: ['', '.js', '.jsx']
+    },
     watch: NODE_ENV == 'development',
     watchOptions: {
         aggregateTimeout: 100
@@ -40,12 +43,12 @@ module.exports = {
     ],
     module: {
         loaders: [{
-            test: /\.js$/,
-            exclude: /(node_modules)/,
-            loader: 'babel',
+            test: /\.jsx?$/,
+            exclude: [/node_modules/],
+            loader: "babel-loader",
             query: {
-                presets: ['es2015']
-            }
+                presets: ['es2015', 'react', 'stage-0', 'stage-1']
+                }
         },
         {
             test: /\.css$/,
