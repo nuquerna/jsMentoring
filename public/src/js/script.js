@@ -1,5 +1,13 @@
 "use strict"
+
 import "../less/style.less";
+
+import React from 'react';
+import ReactDOM from 'react-dom';
+import { Provider } from 'react-redux';
+import { createStore } from 'redux';
+
+import App from './app';
 
 const KEY = "9e72b120edf24cbb82c40d7975ed7e47";
 const URL = `https://newsapi.org/v1/articles?source=bbc-news&apiKey=${KEY}`;
@@ -8,13 +16,14 @@ let articles = [];
 
 let Article = require('./article.js');
 let Admin = require('./singleton.js');
-let Hello = require('./hello.js');
 
 let spinner = document.getElementById("loading");
 
 activate();
 
 function activate() {
+    console.log("hjgj");
+    
     registerEvents();
 
     //SingletonPattern
@@ -66,8 +75,6 @@ function generateArticles(type) {
         newArticle.ContextInterface();
     }
     loading();
-    
-    let hello = new Hello();
 }
 
 function generateGreenArticles() {
@@ -84,3 +91,26 @@ function clearMainNode() {
     let node = document.getElementById("main_article");
     node.innerHTML = '';
 }
+
+function newslist(state = initialNews, action) {
+    if  (action.type === 'ADD_NEWS') {
+        return [
+            ...state,
+            action.newsname
+            ];
+    }
+    return state;
+}
+
+const store = createStore(newslist);
+const initialNews = [
+    'Tramph is a new President of the USA',
+    'Obamacare has been closed'
+];
+
+ReactDOM.render(
+    <Provider store={store}>
+    <App/>
+    </Provider>,
+    document.getElementById('leftroot')
+)
