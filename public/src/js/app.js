@@ -9,23 +9,20 @@ class App extends Component {
         this.props.onAddNews(this.newsInput.value);
         this.newsInput.value = '';
     }
-    
+
     render() {
-        console.log(this.props.testStore);
-        
         return (
             <div>
             <input type='text' ref={(input) => {this.newsInput = input}}/>
             <button onClick={this.addNews.bind(this)}>Add News</button>
             <ul>
+            <li>
             </ul>
-            {this.props.testStore.map((news, index) => <li key={index}>{news}</li>)}
             </div>
         )
-            
     }
 }
-    
+
 export default connect(
     state => ({
         testStore: state

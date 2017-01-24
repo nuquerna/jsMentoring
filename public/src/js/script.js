@@ -22,8 +22,6 @@ let spinner = document.getElementById("loading");
 activate();
 
 function activate() {
-    console.log("hjgj");
-    
     registerEvents();
 
     //SingletonPattern
@@ -57,7 +55,7 @@ function loadNewsFromServer(url) {
               generateArticles(null);
           }
       }).catch(function (ex) {
-          alert(`Error: ${ex}`)        
+          alert(`Error: ${ex}`)
       });
 }
 
@@ -84,7 +82,7 @@ function generateGreenArticles() {
 
 function generateRedArticles() {
      clearMainNode();
-     generateArticles('red');  
+     generateArticles('red');
 }
 
 function clearMainNode() {
