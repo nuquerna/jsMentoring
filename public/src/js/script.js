@@ -94,7 +94,7 @@ function newslist(state = initialNews, action) {
     if  (action.type === 'ADD_NEWS') {
         return [
             ...state,
-            action.newsname
+            action.newsName
             ];
     }
     return state;

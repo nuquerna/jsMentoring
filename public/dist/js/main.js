@@ -60,7 +60,7 @@
 
 	var _redux = __webpack_require__(193);
 
-	var _app = __webpack_require__(!(function webpackMissingModule() { var e = new Error("Cannot find module \"./app\""); e.code = 'MODULE_NOT_FOUND'; throw e; }()));
+	var _app = __webpack_require__(220);
 
 	var _app2 = _interopRequireDefault(_app);
 
@@ -173,13 +173,12 @@
 	    var action = arguments[1];
 
 	    if (action.type === 'ADD_NEWS') {
-	        return [].concat(_toConsumableArray(state), [action.newsname]);
+	        return [].concat(_toConsumableArray(state), [action.newsName]);
 	    }
 	    return state;
 	}
 
 	var store = (0, _redux.createStore)(newslist);
-	console.log(store);
 	var initialNews = ['Tramph is a new President of the USA', 'Obamacare has been closed'];
 
 	_reactDom2.default.render(_react2.default.createElement(
@@ -23860,7 +23859,99 @@
 	}
 
 /***/ },
-/* 220 */,
+/* 220 */
+/***/ function(module, exports, __webpack_require__) {
+
+	'use strict';
+
+	Object.defineProperty(exports, "__esModule", {
+	    value: true
+	});
+
+	var _createClass = function () { function defineProperties(target, props) { for (var i = 0; i < props.length; i++) { var descriptor = props[i]; descriptor.enumerable = descriptor.enumerable || false; descriptor.configurable = true; if ("value" in descriptor) descriptor.writable = true; Object.defineProperty(target, descriptor.key, descriptor); } } return function (Constructor, protoProps, staticProps) { if (protoProps) defineProperties(Constructor.prototype, protoProps); if (staticProps) defineProperties(Constructor, staticProps); return Constructor; }; }();
+
+	var _react = __webpack_require__(5);
+
+	var _react2 = _interopRequireDefault(_react);
+
+	var _reactRedux = __webpack_require__(182);
+
+	function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
+
+	function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError("Cannot call a class as a function"); } }
+
+	function _possibleConstructorReturn(self, call) { if (!self) { throw new ReferenceError("this hasn't been initialised - super() hasn't been called"); } return call && (typeof call === "object" || typeof call === "function") ? call : self; }
+
+	function _inherits(subClass, superClass) { if (typeof superClass !== "function" && superClass !== null) { throw new TypeError("Super expression must either be null or a function, not " + typeof superClass); } subClass.prototype = Object.create(superClass && superClass.prototype, { constructor: { value: subClass, enumerable: false, writable: true, configurable: true } }); if (superClass) Object.setPrototypeOf ? Object.setPrototypeOf(subClass, superClass) : subClass.__proto__ = superClass; }
+
+	var App = function (_Component) {
+	    _inherits(App, _Component);
+
+	    function App() {
+	        _classCallCheck(this, App);
+
+	        return _possibleConstructorReturn(this, (App.__proto__ || Object.getPrototypeOf(App)).apply(this, arguments));
+	    }
+
+	    _createClass(App, [{
+	        key: 'addNews',
+	        value: function addNews() {
+	            this.props.onAddNews(this.newsInput.value);
+	            this.newsInput.value = '';
+	        }
+	    }, {
+	        key: 'render',
+	        value: function render() {
+	            var _this2 = this;
+
+	            //this is a small problem, teststore is undefined first time
+	            var newsStore = [''];
+	            if (this.props.testStore !== undefined) {
+	                newsStore = this.props.testStore;
+	            }
+
+	            return _react2.default.createElement(
+	                'div',
+	                null,
+	                _react2.default.createElement('input', { type: 'text', ref: function ref(input) {
+	                        _this2.newsInput = input;
+	                    } }),
+	                _react2.default.createElement(
+	                    'button',
+	                    { onClick: this.addNews.bind(this) },
+	                    'Add News'
+	                ),
+	                _react2.default.createElement(
+	                    'ul',
+	                    null,
+	                    newsStore.map(function (news, index) {
+	                        return _react2.default.createElement(
+	                            'li',
+	                            { key: index },
+	                            news
+	                        );
+	                    })
+	                )
+	            );
+	        }
+	    }]);
+
+	    return App;
+	}(_react.Component);
+
+	exports.default = (0, _reactRedux.connect)(function (state) {
+	    return {
+	        testStore: state
+	    };
+	}, function (dispatch) {
+	    return {
+	        onAddNews: function onAddNews(newsName) {
+	            return dispatch({ type: 'ADD_NEWS', newsName: newsName });
+	        }
+	    };
+	})(App);
+
+/***/ },
 /* 221 */
 /***/ function(module, exports) {
 

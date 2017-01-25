@@ -11,12 +11,18 @@ class App extends Component {
     }
 
     render() {
+        //this is a small problem, teststore is undefined first time
+        let newsStore = [''];
+        if (this.props.testStore !== undefined) {
+            newsStore = this.props.testStore;
+        }        
+        
         return (
             <div>
             <input type='text' ref={(input) => {this.newsInput = input}}/>
             <button onClick={this.addNews.bind(this)}>Add News</button>
-            <ul>
-            <li>
+            <ul>  
+                {newsStore.map((news, index) => <li key={index}>{news}</li>)}
             </ul>
             </div>
         )
